@@ -1,0 +1,11 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs/WCFDemo
+/WCFDemo/bin/Debug
+/WCFDemo/obj/Debug
+/WcfServiceLibrary/bin
+/WcfServiceLibrary/obj
+/WindowsService/bin
+/WindowsService/obj
