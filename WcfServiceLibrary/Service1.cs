@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WCF.log4netLib;
 
 namespace WcfServiceLibrary
 {
@@ -12,7 +13,9 @@ namespace WcfServiceLibrary
     {
         public string GetData(int value)
         {
+            LogHelper.InfoLog.Info($"调用成功{value}");
             return string.Format("You entered: {0}", value);
+
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

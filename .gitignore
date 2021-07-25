@@ -9,3 +9,6 @@
 /WcfServiceLibrary/obj
 /WindowsService/bin
 /WindowsService/obj
+/packages
+/WCF.log4netLib/obj
+/WCF.log4netLib/bin

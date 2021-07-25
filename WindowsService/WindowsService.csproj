@@ -72,6 +72,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WCF.log4netLib\WCF.log4netLib.csproj">
+      <Project>{c337699d-e7c7-44df-ad98-afbb928c8f46}</Project>
+      <Name>WCF.log4netLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WcfServiceLibrary\WcfServiceLibrary.csproj">
       <Project>{c03841a5-4a8b-4627-9683-d713cba5c019}</Project>
       <Name>WcfServiceLibrary</Name>
@@ -84,6 +88,9 @@
     <EmbeddedResource Include="Service1.resx">
       <DependentUpon>Service1.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
