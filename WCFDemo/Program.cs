@@ -1,5 +1,8 @@
 ﻿using System;
 using System.ServiceModel;
+using System.Web.Hosting;
+using WCF.log4netLib;
+using WcfServiceLibrary;
 
 namespace WCFDemo
 {
@@ -7,10 +10,11 @@ namespace WCFDemo
     {
         static void Main(string[] args)
         {
+            log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(AppDomain.CurrentDomain.BaseDirectory+ "WCFDemo.exe.config"));
             using (ServiceHost host = new ServiceHost(typeof(WcfServiceLibrary.Service1)))
             {
                 host.Open();
-                Console.WriteLine("服务已启动");
+                var rabbitmq = new Rabbitmq();
                 Console.ReadKey();
                 host.Close();
             }

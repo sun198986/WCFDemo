@@ -8,6 +8,8 @@ using System.ServiceModel;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using WCF.log4netLib;
+using WcfServiceLibrary;
 
 namespace WindowsService
 {
@@ -23,7 +25,9 @@ namespace WindowsService
         protected override void OnStart(string[] args)
         {
               host.Open();
-              // host.Close();
+              LogHelper.InfoLog.Info("服务启动");
+              var rabbitmq = new Rabbitmq();
+            // host.Close();
         }
 
         protected override void OnStop()

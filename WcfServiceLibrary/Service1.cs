@@ -15,7 +15,6 @@ namespace WcfServiceLibrary
         {
             LogHelper.InfoLog.Info($"调用成功{value}");
             return string.Format("You entered: {0}", value);
-
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

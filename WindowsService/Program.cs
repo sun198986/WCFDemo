@@ -14,6 +14,7 @@ namespace WindowsService
         /// </summary>
         static void Main()
         {
+            log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(AppDomain.CurrentDomain.BaseDirectory + "WindowsService.exe.config"));
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
