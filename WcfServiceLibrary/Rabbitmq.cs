@@ -9,23 +9,27 @@ namespace WcfServiceLibrary
 {
     public class Rabbitmq
     {
+        private readonly BusinessRabbitMq _businessRabbitMq;
         public Rabbitmq()
         {
-            var factory = new ConnectionFactory() { UserName = "sunshijie", Password = "123456", HostName = "192.168.241.128", Port = AmqpTcpEndpoint.UseDefaultPort};
+            _businessRabbitMq = new BusinessRabbitMq();
+        }
+
+        public void OnStart()
+        {
+            var factory = new ConnectionFactory() { UserName = "massuser1", Password = "mass.2021", HostName = "192.168.40.128", Port = AmqpTcpEndpoint.UseDefaultPort };
 
             using (var connection = factory.CreateConnection())
+
             using (var channel = connection.CreateModel())
             {
+                string nameDeclare = channel.QueueDeclare(queue: "hello",
+                    durable: false,
+                    exclusive: false,
+                    autoDelete: false,
+                    arguments: null);
                 var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
-                {
-                    var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body.ToArray());
-                    IService1 service1 = new Service1();
-                    service1.GetData(int.Parse(message));
-                    LogHelper.InfoLog.Info($"channel{message}");
-                };
-                
+                consumer.Received += _businessRabbitMq.DelRecive;
                 channel.BasicConsume(queue: "hello",
                     autoAck: true,
                     consumer: consumer);

@@ -15,6 +15,7 @@ namespace WCFDemo
             {
                 host.Open();
                 var rabbitmq = new Rabbitmq();
+                rabbitmq.OnStart();
                 Console.ReadKey();
                 host.Close();
             }
